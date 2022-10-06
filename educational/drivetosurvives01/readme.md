@@ -35,7 +35,7 @@ This means that for us to find an interesting driver that could possibly have a 
 
 By doing these steps we have identified the API name (IoCreateSymbolicLink name), we have identified the endpoint (IOCTL address) and we have identified what input data we are required to send to the endpoint to trigger the vulnerability.
 
-## HINTS
+## TIPS
 - Have the above mentioned article opened and use it as a reference guide as you proceed
 - Remember to apply the ntddk_64.gdt in Ghidra to extend symbol support in Ghidra
 - Find the correct entry function -> find the MajorFunction[0xe] (IRP_MJ_DEVICE_CONTROL) handler function -> Locate and understand vulnerable code -> Use a user mode client to call the driver with the identified IOCTL address and required input data. -> Profit!
