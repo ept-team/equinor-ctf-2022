@@ -30,7 +30,7 @@ This leads to https://opsecx.com/index.php/2017/02/08/exploiting-node-js-deseria
 }
 ```
 
-All we have to to now is to use `fs` and `readFileSync` to get the file contents:
+All we have to do now is to use `fs` and `readFileSync` to get the file contents:
 
 ```
 {
