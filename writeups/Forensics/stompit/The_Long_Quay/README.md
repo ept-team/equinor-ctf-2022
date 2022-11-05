@@ -24,7 +24,7 @@ Now, the MFT contains alot more records (322868) than the 9999 files from files.
 
 (There's definitely more elegant alternatives to this as this will drop the header, but after looking at the columns once it didn't really matter for me)
 
-Upon manually inspecting these records I noticed they all seemingly had the same timestamp: 2022-10-03 22:49:35.<nanoseconds>.
+Upon manually inspecting these records I noticed they all seemingly had the same timestamp: 2022-10-03 22:49:35.\<nanoseconds\>.
 Generally speaking, its rather difficult to do very granular timestomping, so my first idea was to look for any records missing nanoseconds:
 
 `grep -P '\.txt\"\,\"2022\-10\-03\s\d{2}\:\d{2}\:\d{2}\"' records.csv`
