@@ -11,14 +11,14 @@ Wat do
 ------
 You're given two files; mft.zip and files.zip
 
-mft.zip contains $MFT which is a Master File Table from a NTFS volume where each file is represented by a record, and files.zip contains 9999 .txt-files which ALL had a unique flag in them.
+mft.zip contains $MFT which is a Master File Table from a NTFS volume where each file is represented by a record, and files.zip contains 9994 .txt-files which ALL had a unique flag in them.
 
 Depending on your tool and OS of choice, you may or may not need to convert the MFT to a more convenient format.
 I used https://github.com/dkovar/analyzeMFT (which can be installed with $ sudo pip install analyzeMFT) to convert the records to csv with 
 
 `$ sudo analyzeMFT.py -f '$MFT' -o mftanalyzed.csv`
 
-Now, the MFT contains alot more records than the 9999 files from files.zip, so the first thing I did was to filter these out based on the path they were in with
+Now, the MFT contains alot more records (322868) than the 9999 files from files.zip, so the first thing I did was to filter these out based on the path they were in with
 
 `$ grep '\/Techarisma Corporation\/HR_masterdata\/' mftanalyzed.csv > records.csv`
 
