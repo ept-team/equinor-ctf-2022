@@ -27,11 +27,13 @@ I didn't really need the header as I already knew where the relevant timestamp w
 While nspecting these records I noticed they all seemingly had the same timestamp: 2022-10-03 22:49:35.\<nanoseconds\>.
 Generally speaking, its rather difficult to do very granular timestomping, so it made sense to look for any records missing nanoseconds:
 
-`grep -P '\.txt\"\,\"2022\-10\-03\s\d{2}\:\d{2}\:\d{2}\"' records.csv`
+`grep -P '\"2022\-10\-03\s\d{2}\:\d{2}\:\d{2}\"' records.csv`
 
-which gave me the the following record
+which matched the columns `"Std Info Creation date","Std Info Modification date","Std Info Access date","Std Info Entry date"` and gave me the the following record:
 
+```
 "170029","Good","Active","File","1","207","2","/Techarisma Corporation/HR_masterdata/3621169.txt","2022-10-03 22:49:46","2022-10-03 22:49:46","2022-10-03 22:49:46","2022-10-03 22:49:46","2022-10-03 22:49:46.105391","2022-10-03 22:49:46.105391","2022-10-03 22:49:46.105391","2022-10-03 22:49:46.105391","48806af0-5646-ed11-a75e-000c29b74253","80000000-5801-0000-0000-180000000100","3f010000-1800-0000-2323-232320546563","68617269-736d-6120-436f-72706f726174","","","","","","","","","","","","","","","","True","False","True","True","False","False","False","False","False","False","False","False","False","False","False","","N","N","N"
+```
 
   which in turn contained the flag
   
