@@ -28,7 +28,7 @@ grep '\/Techarisma Corporation\/HR_masterdata\/' mftanalyzed.csv > records.csv
 
 I didn't really need the header as I already knew where the relevant timestamp would be, but there's definitely more elegant ways to do this.
 
-While nspecting these records I noticed they all seemingly had the same timestamp: 2022-10-03 22:49:35.\<nanoseconds\>.
+While nspecting these records I noticed they all seemingly had the same timestamp: `2022-10-03 22:49:35.\<nanoseconds\>`.
 Generally speaking, its rather difficult to do very granular timestomping, so it made sense to look for any records missing nanoseconds:
 
 ```bash
