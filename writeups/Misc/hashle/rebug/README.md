@@ -155,6 +155,14 @@ If we have 1 green, 2 yellow and 3 black `d`s, we know that there are exactly 3
 100-1000 hashes left after one single guess, approx `-99.995%`. Imma refer to
 it as the **yellow algorithm** :)).
 
+The other algorithm we used, the **normal algorith**, simply keep track of
+possible characters in each position. The way we keep track of this is to keep
+a set of possible characters for each position in the hash. Initially `[0-f]`,
+and whenever we get a green hint we set the set to only contain that one hint,
+and whenever we get a yellow hint we remove the character we submitted (since
+it was not correct). We can then use that to filter away those that are not
+possible.
+
 ## remaining part
 The hardest part of this task was probably making it work consequently. Just
 reading the pre-hashes password list takes many seconds on my shitty laptop,
