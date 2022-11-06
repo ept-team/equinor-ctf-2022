@@ -11,9 +11,9 @@ We're provieded two files `server.py` and `Dockerfile`, these are provided so th
 
 The file `server.py` shows us what happens on the site, we see that there is a symmetric signature scheme based on a hash-based message authentication code. I struggled initially with this challenge, because I focused on the poorly implemented HMAC which was vulnerable to an length extention attack, however the overall design of the challenge made such an attack infeasable due to the relatively short ciphertexts.
 
-Every time we load the site, we're given somether ciphertext, a nonce, and a signature. If we're able to provide a piece of ciphertext, a nonce, a signature and the correct plaintext belonging to the ciphertext, we will be given the flag. Providing validly encrypted and signed ciphertext but invalid plaintext will give us the valid plaintext.
+Every time we load the site, we're given some ciphertext, a nonce, and a signature. If we're able to provide a piece of ciphertext, a nonce, a valid signature and the correct plaintext belonging to the ciphertext, we will be given the flag. Providing a validly encrypted and signed ciphertext but invalid plaintext will give us the valid plaintext.
 
-The encryption scheme used is AES256 CTR-mode encryption. This encryption works by encrypting the sequentially nonce appended with a counter and performing a bitwise-XOR with the plaintext to obtain the ciphertext. In practice this means CTR-mode functions as a stream cipher, which opens for bit-flipping attacks. CTR-mode encryption/decryption visualized:
+The encryption scheme used is AES256 CTR-mode encryption. This encryption works by encrypting the nonce appended with a counter and performing a bitwise-XOR with the plaintext to obtain the ciphertext. In practice this means CTR-mode functions as a stream cipher, which opens for bit-flipping attacks. CTR-mode encryption/decryption visualized:
 
 ![CTR-mode decryption](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/CTR_decryption_2.svg/601px-CTR_decryption_2.svg.png)
 
