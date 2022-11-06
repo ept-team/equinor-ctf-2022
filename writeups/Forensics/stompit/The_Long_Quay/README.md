@@ -16,7 +16,9 @@ mft.zip contained $MFT which is a Master File Table from a NTFS volume where eac
 Depending on your tool and OS of choice, you may or may not need to convert the MFT to a more convenient format.
 I used https://github.com/dkovar/analyzeMFT (which can be installed with `sudo pip install analyzeMFT`) to convert the records to csv with 
 
-`sudo analyzeMFT.py -f '$MFT' -o mftanalyzed.csv`
+```bash
+sudo analyzeMFT.py -f '$MFT' -o mftanalyzed.csv
+```
 
 Now, the MFT contained alot more records (322868) than the 9994 files from files.zip, so it made sense to filter these out based on the path they were in, with;
 
