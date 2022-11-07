@@ -1,3 +1,14 @@
+Description
+---
+**Techarisma Chapter 1/7**
+
+One of our Offensive Operations guys is on the inside of the hacking
+crew Haxquad. He has compromised one of them and extracted an email. Seems like
+they are working on something new. Can you take a look and see if you can find anything
+interesting?
+
+Wat do
+---
 Upon opening the provided .eml there's a file attached: `resume.pdf`.
 
 From here there are several approaches that can be used, but depending on the filetype I almost always start with binwalk to se if there's something more hidden;
@@ -27,8 +38,6 @@ binwalk -e 377
 
 DECIMAL       HEXADECIMAL     DESCRIPTION
 --------------------------------------------------------------------------------
-
-WARNING: Extractor.execute failed to run external extractor 'jar xvf '%e'': [Errno 2] No such file or directory: 'jar': 'jar', 'jar xvf '%e'' might not be installed correctly
 0             0x0             Zip archive data, compressed size: 39, uncompressed size: 39, name: mimetype
 77            0x4D            Zip archive data, at least v2.0 to extract, name: Basic/Standard/evil_macro.xml
 824           0x338           Zip archive data, at least v2.0 to extract, name: Basic/Standard/script-lb.xml
