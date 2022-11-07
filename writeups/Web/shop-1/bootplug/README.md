@@ -27,7 +27,7 @@ If a string starts with `/` then `os.path.join` puts it as first in the result s
 `/etc/rpc` is actually a file that exists on Linux, and this now gets used as the secret key. Now that we know what the secret key is, we can craft our own
 session cookie that has a lot of money, since the money is stored in the user session.
 
-In order to solve this challenge I created my own Flask program that uses the `/etc/rpc` file as SECRET. Use the rpc-file from `ubuntu:22.04` docker
+In order to solve this challenge I created my own Flask program that uses the `/etc/rpc` file as SECRET. Use the rpc-file from `python:latest` docker
 so you're sure you use the exact same file as the server.
 
 ```python
