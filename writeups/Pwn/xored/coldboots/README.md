@@ -25,7 +25,7 @@ xored-handout/libc.so.6
 ## Analysis
 
 Dockerfile reveals it runs on ubuntu:20.04, flag file is /opt/flag and we are provided with the correct version of libc. Nice!
-The binary is approptiately called xored. 
+The binary is appropriately called xored. 
 
 Running checksec on the binary reveals No PIE, No Canary and Partial RELRO
 
@@ -74,7 +74,7 @@ undefined4 main(void)
 }
 ```
 
-Analysing this shows that the heap_mem buffer of max 160 bytes is xored 16 bytes a time with alternating keys. These keys are however contigous in memory, so xoring with the entire 32 byte array works the same.
+Analysing this shows that the heap_mem buffer of max 160 bytes is xored 16 bytes a time with alternating keys. These keys are however contiguous in memory, so xoring with the entire 32 byte array works the same.
 
 Then the 160 byte buffer is copied into a 120 byte buffer on the stack, giving us 40 bytes of overflow and probably controlling the return pointer of main(). First, however we have to xor the payload with the key to make the `xorit` function unpack the intended payload in memory instead of `securely encrypting` it.
 
@@ -129,7 +129,7 @@ We can see that we have written 160 bytes, but only barely reached the return po
 This means that there is a gap between our buffer and the end of the stack, eating away at our 40 byte overflow. It seems we only get one single jump in our ROP.
 There are not many viable options in this situation. A one-gadget in libc would be nice, but we don't know the base address when running with ASLR (which the remote server has enabled in 99 of 99 cases)
 
-Another option is to look for something that manupulates `rsp` to give us additional ROP jumps. I use pwntools' `ROPgadget` to check for gadgets
+Another option is to look for something that manipulates `rsp` to give us additional ROP jumps. I use pwntools' `ROPgadget` to check for gadgets
 
 ```sh
 $ ROPgadget --binary xored | grep rsp
@@ -247,7 +247,7 @@ If you have done ret2libc before this should look familiar. rop.puts() does the 
 
 This will call `puts` to output the address of `printf` in libc. Knowing an address in libc and it's offset will enable us to calculate any function or gadget in libc. This is powerful stuff!
 
-TL;DR on the stack alignment is always align the stack on 16 bytes. Unaligned stack leads to all sorts of trouble. See the pwn/rip writeup for an excellent explanation why. At this point I just automatically align 6 out of 10 times! 
+TL;DR on the stack alignment is always align the stack on 16 bytes. Unaligned stack leads to all sorts of trouble. See the educational/rip writeup for an excellent explanation why. At this point I just automatically align 6 out of 10 times! 
 
 
 Next we capture the address of `printf` outputted by `puts`. Then calculate the libc base by subtracting the print-offset in the libc ELF object.
@@ -310,7 +310,7 @@ The stack look horrible and garbled. What is going on?
 
 ![cryptowat](stack4.png)
 
-Let's print some debut output for the payloads:
+Let's print some debug output for the payloads:
 
 ```python
 secur = CodeIt(payload)
@@ -371,4 +371,7 @@ $ cat /opt/flag
 EPT{t0ld_y0u_x0r_1s_s3cur3_!}$  
 ``` 
 
+### Pwnd at last!
+
+:tada:
 
