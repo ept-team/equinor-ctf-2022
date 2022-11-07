@@ -39,9 +39,9 @@ So apparently an extensive bit of encoded Powershell is ran at start-up with the
 
 ![CyberChef tweaking.](cyberchef_deob.png "CyberChef tweaking.")
 
-Bah. This looks like a hassle to break up by hand, and MacOS' Powershell refused to run it due to local Windows specific references. Luckily there are some great, free Windows sandboxes like App.any.run that we can experiment with to see if dynamic analysis reveals interesting network traffic, new files or similar.
+Bah. This looks like a hassle to break up by hand, and MacOS' Powershell refuses to run it due to local Windows specific references. Luckily there are some great, free Windows sandboxes like [App.any.run](https://app.any.run/) that we can experiment with to see if dynamic analysis reveals interesting network traffic, new files or similar.
 
-Let's gather the core part of the ominous payload and save it to hack.bat, so we can download and run it directly on App.any.run. On the first try the window simply closes, but by accessing cmd and going to C:\Users\admin\AppData\Local\Temp we can just smash it again. 
+Let's gather the core part of the ominous payload and save it to hack.bat, so we can upload and run it directly on App.any.run. In the first try the window simply closes, but by accessing cmd and going to C:\Users\admin\AppData\Local\Temp we can just smash it again. 
 
 And what do you know - a flag pops out!
 
@@ -51,4 +51,4 @@ And what do you know - a flag pops out!
 ## Flag 
 `EPT{the_action_or_fact_of_persisting}`
 
-Thanks a lot to EPT and Equinor for the great challenges, good company, an absolutely amazing onsite event and keeping the CTFtime second place spot nice and warm for us before we snatch it back!
+Thanks a lot to EPT and Equinor for the great challenges, good company, an absolutely amazing onsite event and keeping the CTFtime second place nice and warm for us before we snatch it back!
