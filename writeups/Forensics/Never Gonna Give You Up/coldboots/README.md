@@ -27,7 +27,7 @@ Alright, so someone's been hiding their traces well. Time to really delve under 
 
 So, Volatility's key features are just additional heuristical Python scripts and it's easy for something to slip past their parsing, especially with something as massive and fragmented as the Windows registry. Thus, manually sifting through our reggae.txt file would both be extremely labor intensive and possibly fruitless. Since any clear signs of malicious persistance would be revealed by our tentative recon, it's very plausible that it's simply hidden in a (for Volatility 3) blind spot in the registry. 
 
-This is where we tighten our approach a bit. Hivescan didn't reveal any very on the nose custom registry keys, so it's fair to assume that our secret is hidden in a default key. [Doing a bit of research](https://www.cyborgsecurity.com/cyborg-labs/hunting-for-persistence-registry-run-keys-startup-folder/) will reveal some of the most common paths, and they should be of a managable size to parse by hand with (`vol -f memdump.raw windows.registry.printkey --key <path> --recurse). 
+This is where we tighten our approach a bit. Hivescan didn't reveal any very on the nose custom registry keys, so it's fair to assume that our secret is hidden in a default key. [Doing a bit of research](https://www.cyborgsecurity.com/cyborg-labs/hunting-for-persistence-registry-run-keys-startup-folder/) will reveal some of the most common paths, and they should be of a managable size to parse by hand with (`vol -f memdump.raw windows.registry.printkey --key <path> --recurse`). 
 
 And eureka! `\Software\Microsoft\Windows\CurrentVersion\RunOnce` gives a very suspicious response. 
 
@@ -43,7 +43,7 @@ Bah. This looks like a hassle to break up by hand, and MacOS' Powershell refused
 
 Let's gather the core part of the ominous payload and save it to hack.bat, so we can download and run it directly on App.any.run. On the first try the window simply closes, but by accessing cmd and going to C:\Users\admin\AppData\Local\Temp we can just smash it again. 
 
-And what do you know - a flag pops out! 
+And what do you know - a flag pops out!
 
 ![Love at first sight.](sandbox_flag.png "Love at first sight.")
 
