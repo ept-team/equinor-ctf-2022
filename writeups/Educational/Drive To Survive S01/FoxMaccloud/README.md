@@ -1,6 +1,7 @@
 # Drive To Survive S01
 
 Author: [FoxMaccloud](https://github.com/FoxMaccloud/)
+Website: [Foxmaccloud.com](https://foxmaccloud.com/)
 
 ## Description
 
@@ -14,7 +15,7 @@ Driver Utils
 ├──DriverClient.exe
 └──DriverQuery.exe
 ```
-DriverQuery.exe enumerates driver sercies and DriverClient.exe attemtps to communicate with a driver given the symlink.
+DriverQuery.exe enumerates driver services and DriverClient.exe attemtps to communicate with a driver given the symlink.
 
 ![](img/1.png)
 
@@ -23,7 +24,7 @@ Opening eptdrv.sys in Ghidra, we find our symlink and we can find our IOCTL code
 ![](img/2.png)
 
 In the IRP_MJ_DEVICE_CONTROL function, we find our presumed ioctl codes. Only `0x222008` looks to be implemented, and references the flag.
-![](img/2.png)
+![](img/3.png)
 
 Using the DriverClient we can attempt to provide this symlink and IOCTL code.
 
@@ -34,8 +35,6 @@ Looking closer at the code, we see that we only hit the flag if pcVar5 contains 
 ![](img/5.png)
 
 pcVar5 in this context is the AssociatedIrp and can be passed along with DeviceIoControl.
-
-![](img/6.png)
 
 ## Making our own client
 
