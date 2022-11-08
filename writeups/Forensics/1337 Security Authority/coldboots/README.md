@@ -11,7 +11,7 @@ More forensics!
 `Techarisma Chapter 3/7
 It seems that the threat actor have been utilizing their admin privileges to mess with protected processes. We found a dump file on a compromised system. What could they have got out of this?`
 
-Our insider was able to provide us with a custom password wordlist that we suspect was used in this attack.
+`Our insider was able to provide us with a custom password wordlist that we suspect was used in this attack.`
 
 # Intro
 
