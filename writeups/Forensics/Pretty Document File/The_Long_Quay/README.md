@@ -85,7 +85,7 @@ Decoding this reveals a semi-obfuscated command
 
 This looks like something deciding the order of the characters in the command. It's clear that the first sequence spells `IEX`, second `New-Object`, third `Net.WebClient` etc. So what's left in the final sequence is just mapping the numbers to the corresponding characters/values.
 
-Due to my severely limited understanding of python and the fact that I didn't want to deal with arrays in bash, I just manually mapped the corresponding chars and numbers, and easily enough got the flag: `EPT{M4ld0cs_r0X}`. But again, CTFs are all about learning by doing, so I figured I'd give it a try anyways:
+Due to my severely limited understanding of python and the fact that I didn't want to deal with arrays in bash, I just manually mapped the corresponding chars and numbers, and easily enough got the flag: `EPT{M4ld0cs_r0X}`. But again, CTFs are all about learning (by doing), so I figured I'd give it a try anyways:
 
 Echoing the relevant stuff in two files;
 
@@ -132,16 +132,16 @@ T
 ```
 ![image](https://user-images.githubusercontent.com/5417302/200560164-d9de4f78-09b8-419d-95f1-4327a500f375.png)
 
-How on earth do I tell while and/or sed to start at 0?
-After banging my head for literally an hour, I just removed the first line in chars_washed and hoped for the best.
+How on earth do I tell sed to start at... 0? I could just remove the first line i `chars_washed` and hope for the best.
+After some (alot) of trial and error, this kinda worked:
 
 ```bash
-cat positions_washed | while read -r line; do sed "${line}q;d" chars_washed; done > flag
+cat positions_washed | while read -r line; do sed "$((${line}+1))q;d" chars_washed; done
 tr -d '\n' < flag
 cat flag
 ```
 ```bash
-https ://192.168.143.128/EPT{M4ld0cs_r0X}P
+https ://192.168.143.128/EPT{M4ld0cs_r0X}Y
 ```
 
 Close enough.
