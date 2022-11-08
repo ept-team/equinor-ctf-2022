@@ -63,7 +63,7 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 
 `Basic/Standard/evil_macro.xml` immediatly stands out and sure enough it's a b64-encoded powershell command;
 
-```bash
+```xml
 cat evil_macro.xml
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -83,13 +83,11 @@ This looks like something deciding the order of the following characters in the 
 
 ```bash
 echo "'Y','P','E','u','M','X','n','0','P','f','d','e','&','/','4','Se','g','i','n','s','e','E','5','8','2','V','vz','M','l','A','a','bad','er','r','o','u','p','PP','zZ','down','up','ev','il','exe','ps','4','m','{','_','T','}','c','https', '://','192.168.143.128/'" > chars
-
 echo "{52}{53}{54}{2}{8}{49}{47}{4}{14}{28}{10}{7}{51}{19}{48}{33}{7}{5}{50}" > positions
 ```
 
 ```bash
 cat chars | tr -d \' | sed 's/,/\n/g' > chars_washed
-
 cat positions | tr -d \{ | sed 's/\}/\n/g' > positions_washed
 ```
 
