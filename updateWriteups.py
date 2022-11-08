@@ -12,10 +12,10 @@ for category in listdir("./writeups"):
         continue
     text += f'### {category}\n'
     for chall in listdir(f'./writeups/{category}'):
-        text += (f'#### {chall}\n')
+        text += (f'  \n**{chall}**  \n')
         for writeup in next(walk(f'./writeups/{category}/{chall}'))[1]:
             url = f'/writeups/{category}/{chall}/{writeup}'.replace(' ', '%20')
-            text += f"* [{writeup}]({url})\n"
+            text += f"* [{writeup}]({url})  \n"
 
 
 open('README.md', 'w').write(text)
