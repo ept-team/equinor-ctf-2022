@@ -85,7 +85,7 @@ Decoding this reveals a semi-obfuscated command
 
 This looks like something deciding the order of the characters in the command. It's clear that the first sequence spells `IEX`, second `New-Object`, third `Net.WebClient` etc. So what's left in the final sequence is just mapping the numbers to the corresponding characters/values.
 
-Due to my severely limited understanding of bash, python or even powershell, I just manually mapped the corresponding chars and numbers, and easily enough got the flag: `EPT{M4ld0cs_r0X}`. But again, CTFs are all about learning by doing, so I figured I'd give it a try anyways:
+Due to my severely limited understanding of python and the fact that I didn't want to deal with arrays in bash, I just manually mapped the corresponding chars and numbers, and easily enough got the flag: `EPT{M4ld0cs_r0X}`. But again, CTFs are all about learning by doing, so I figured I'd give it a try anyways:
 
 Echoing the relevant stuff in two files;
 
@@ -130,8 +130,6 @@ n
 M
 T
 ```
-
-
 ![image](https://user-images.githubusercontent.com/5417302/200560164-d9de4f78-09b8-419d-95f1-4327a500f375.png)
 
 How on earth do I tell while and/or sed to start at 0?
