@@ -116,7 +116,7 @@ These are the functions we can call from the menu.
   * Can overwrite a chunk pointer with a newly allocated, giving infinite allocations but causing orphaned chunks.
 * 2:  Edit
   * Checks to see if a pointer exists in the array. Prints error if it is 0
-  * Takes input into the memory address at the index if it exists. only 0x10 bytes with fgets, so no overflow possiible.
+  * Takes input into the memory address at the index if it exists. only 0x10 bytes with fgets, so no overflow possible.
 * 3: Delete
   * Checks for null, kinda redundant tbh
   * Frees the memory at the pointer if it is not null.
@@ -143,7 +143,7 @@ pwn template --quiet --host=io.ept.gg --port=30001 ./heap > solve.py
 then add `handle SIGALRM ignore` to the gdbscript part to avoid a timeout when poking through memory in gdb.
 I also add `libc = ELF('./libc.2.35.so')` to the script right away. I'm sure I'll need it!
 
-When a binary is set up this way, it's good to make functions in the solve script to interact with all the functions iin the binary and all their inputs:
+When a binary is set up this way, it's good to make functions in the solve script to interact with all the functions in the binary and all their inputs:
 
 ```python
 def Malloc(Index):
@@ -236,7 +236,7 @@ what are these values? Lets check GDB using the `heap chunks` command.
 
 We can see that there has actually been allocated two chunks with size 0x20 for our data. 
 
-The chunk ending in `0x2a0` (chunk 0) has the `0x555555559`, and the `0x2c0` one (chunk 1) actually has `0x55500000c7f9`, but because of the null bytes we can't get the upper part.. With ASLR enabled you probably wouldn't get the null bytes, and get a full address leak. (We stick with ASLR disabled for now since we don't need this leak at the moment.)
+The chunk ending in `0x2a0` (chunk 0) has the `0x555555559`, and the `0x2c0` one (chunk 1) actually has `0x55500000c7f9`, but because of the null bytes we can't print the upper part.. With ASLR enabled you probably wouldn't get the null bytes, and would get a full address leak. (We stick with ASLR disabled for now since we don't need this leak at the moment.)
 
 ![Tcache](tcache1.png)
 
@@ -264,9 +264,9 @@ Tcachebins[idx=0, size=0x20, count=1] _  Chunk(addr=0x5555555592c0, size=0x20, f
 
 Now chunk 1 `0x2c0` points to the address we wrote.. 
 
-When we allocate a new chunk of size < 0x20, the tcache will give us the chunk at the top, and put the next chunk `0x57a7e0f113b0` as first chunk. The following allocation would then return `0x57a7e0f113b0`, enabling us to read or write to/from this area.
+When we allocate a new chunk of size < 0x20, the tcache will give us the chunk at the top (`0x2c0`), and put the next chunk `0x57a7e0f113b0` as first chunk. The following allocation would then return `0x57a7e0f113b0`, enabling us to read or write to/from this area.
 
-Let's try this with an actual address. We have leaked libc, so leẗ́'s try to read `environ`. This could lead to us getting knowledge of where the stack is positioned, as the environment variables are placed at the end of the stack area.
+Let's try this with an actual address. We have leaked libc, so let's try to read `environ`. This is symbol in libc it's good to know about as it contains a pointer to the environment variables that are placed at the end of the stack area. Thiis enables us to attack the stack next.
 
 ```python
 Write(1, p64((libc.sym.environ)^value_0)) 
@@ -338,7 +338,7 @@ Output:
     b'Child terminated with signal = 0x6 (SIGABRT)\n'
 ```
 
-We are getting alignment issues as we are trying to "allocate" a tcache chunk which is not aligned the way heap chunks usually are. it's a 16 byte alignment so we need to subtract 8 to get it right. This will overwrite one 64bit word before the RIP, which is the stored stack base pointer, RBP. That's usually fine, so let's try:
+We are getting alignment issues as we are trying to "allocate" a tcache chunk which is not aligned the way heap chunks usually are. it's a 16 byte alignment so we need to subtract 8 to get it right. This will overwrite one 64bit word before the RIP, which is the stored stack base pointer, RBP, of the previous stack frame. That's usually fine, so let's try:
 
 Let's even try with a ROP chain while we're at it.
 
@@ -352,7 +352,7 @@ payload = p64(0) + bytes(rop.chain())
 for IDX,WAT in enumerate([ payload[i:i+16] for i in range(0,len(payload),16) ]):
     WWW(environ - 0x120-8 + 16*IDX, WAT)
 ```
-This should have worked, but when writing 16 bytes at a time I keep getting problems with extra bytes because of the sendline-function in the Write method. After some trial and error and frustration with extra bytes it ended up like this:
+This should have worked, but when writing 16 bytes at a time I keep getting problems with extra bytes because of the sendline-function in the Write method. After some trial and error and frustration with extra bytes it ended up like this to finally work.
 
 ```python
 def Write(Index, Value):
