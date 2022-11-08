@@ -1,4 +1,4 @@
-# Forensics/Never Gonna Give You Up (23 solves / 403 points) 
+# Forensics/1337 Security Authority (23 solves / 403 points) 
 
 by *Roellik* for *coldboots*
 
@@ -27,7 +27,7 @@ The most common tool for this job is `mimikatz`, which also has a very user fien
 
 ![Well look at that.](pypykatz_dump.png "Well look at that.")
 
-The NTLM password hash is stored in the "LM" field, as shown for jacobs user above. We can probably assume that he knows his own password, but let's check the hash against a database like [Crackstation](https://crackstation.net/) to be sure.
+The NTLM password hash is stored in the "NT" field, as shown for jacobs user above. We can probably assume that he knows his own password, but let's check the hash against a database like [Crackstation](https://crackstation.net/) to be sure.
 
 ![Kapow.](crackstation.png "Kapow.")
 
