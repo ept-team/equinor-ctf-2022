@@ -1,5 +1,7 @@
 # stompit
 Author: rvino
+
+Flag: `EPT{b709edeabe2d1859f145216ec0a9fe26304d6681}`
 ## Description
 ```
 **Techarisma Chapter 4/7**
@@ -13,8 +15,8 @@ responders have extracted the `$MFT` along with the files from the relevant dire
 Can you find the file?
 
 Flag format: EPT{cec5727a3e9340094ec2c1d2c6ff0f416059668c}"
-
 ```
+
 ## Provided challenge files
 * [mft.zip](mft.zip)
 * [files.zip](files.zip)

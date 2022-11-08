@@ -1,5 +1,7 @@
 # pincodes
 Author: sweeet
+
+Flag: `EPT{Sh0uld_Pr0b4bly_N0T_St0r3_fl4gs_0n_W4nn4b3_AI_Security_sites}`
 ## Description
 ```
 Category: Misc/ML
@@ -9,8 +11,8 @@ which is then run through an AI model in order to create a second code. During a
 It's very likely that one of the EPT members have been using the company site in order to store one of the CTF flags. So perhaps you can figure out how to calculate the 2nd pin and get the flag.
 
 `nc {{host}} {{port}}`
-
 ```
+
 ## Provided challenge files
 * [model.h5](model.h5)
 * [pincodes.txt](pincodes.txt)

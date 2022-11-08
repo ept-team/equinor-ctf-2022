@@ -1,5 +1,7 @@
 # The Projects - Root
 Author: viipz, rvino
+
+Flag: `EPT{b4d_p3rm15510n5}`
 ## Description
 ```
 **Category: Boot2Root/Educational** (You can ask for hints if you are stuck)
@@ -9,5 +11,5 @@ Good job! See if you can escalate your privileges to root. If so, you will find 
 Brute forcing / Fuzzing is allowed on this challenge.
 
 Use the same instance as before.
-
 ```
+

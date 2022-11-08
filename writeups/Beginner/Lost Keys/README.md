@@ -1,5 +1,7 @@
 # Lost Keys
 Author: LOLASL
+
+Flag: `EPT{n00m_n00m_c00kies}`
 ## Description
 ```
 Category: Forensics\Web
@@ -11,7 +13,7 @@ Site: {{link}}
 
 
 *PS: Note that there is a pcap provided for this challenge..*
-
 ```
+
 ## Provided challenge files
 * [vault.pcapng](vault.pcapng)

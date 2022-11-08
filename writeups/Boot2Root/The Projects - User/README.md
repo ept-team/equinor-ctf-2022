@@ -1,5 +1,7 @@
 # The Projects - User
 Author: viipz, rvino
+
+Flag: `EPT{w3b4pp_m15c0nf1gur4t10n}`
 ## Description
 ```
 **Category: Boot2Root/Educational** (You can ask for hints if you are stuck)
@@ -8,6 +10,6 @@ Are you ready to get an initial foothold on this super duper secure machine? You
 
 Brute forcing / Fuzzing is allowed on this challenge.
 
-Click [here](https://ctf.equinor.com/ondemand/) for access to the machine. 
-
+Click [here](https://ctf.equinor.com/ondemand/) for access to the machine.
 ```
+

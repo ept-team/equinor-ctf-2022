@@ -1,5 +1,7 @@
 # helpdesk
 Author: iLoop
+
+Flag: `EPT{Pleas3_N3ver_Trust_Us3r_1nput}`
 ## Description
 ```
 So we are tired of the Helpdesk system so we decided to creat a new one. We are realasing version 0.1a now.
@@ -11,5 +13,6 @@ over 45 char long so plase do not do this.
 
 Site: {{ link }}
 ```
+
 ## Provided challenge files
 * [code.zip](code.zip)

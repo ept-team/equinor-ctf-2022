@@ -1,5 +1,7 @@
 # A picture is worth a thousand words
 Author: viipz
+
+Flag: `EPT{sn1tch35_G3t_st1tch35}`
 ## Description
 ```
 **Techarisma Chapter 2/7**
@@ -10,5 +12,5 @@ is moving laterally through the environment. We received a memory dump of one
 of the compromised systems. See what you can find.
 
 [memdump.raw](https://ept2022.s3.eu-west-1.amazonaws.com/memdump-267866849498bf7cdb3bbc95fc9951f1.raw)
-
 ```
+
