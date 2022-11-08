@@ -84,3 +84,17 @@ This looks like something deciding the order of the following characters in the 
 ```bash
 echo "'Y','P','E','u','M','X','n','0','P','f','d','e','&','/','4','Se','g','i','n','s','e','E','5','8','2','V','vz','M','l','A','a','bad','er','r','o','u','p','PP','zZ','down','up','ev','il','exe','ps','4','m','{','_','T','}','c'" > chars
 ```
+
+```bash
+
+```
+
+```bash
+```
+```bash
+```
+```bash
+cat positions_washed | while read -r line; do sed "${line}q;d" chars_washed; done
+```
+```bash
+```
