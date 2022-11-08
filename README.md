@@ -25,6 +25,7 @@
  - **Lets play harder**
 	 - [givecake](/writeups/Misc/Lets%20play%20harder/givecake)  
 	 - [Team404](/writeups/Misc/Lets%20play%20harder/Team404)  
+	 - [dragonslayerz](/writeups/Misc/Lets%20play%20harder/dragonslayerz)  	 
  - **Drive To Survive S02**
  - **Crypt**
  - **hashle**
@@ -55,6 +56,8 @@
  - **Service Principals as SysAdmins**
  - **ServicePrincipal**
 	 - [WackAttackNTNU](/writeups/Azure/ServicePrincipal/WackAttackNTNU)  
+	 - [dragonslayerz](/writeups/Azure/ServicePrincipal/dragonslayerz)  
+	 
  - **DSC**
 ### Web
  - **EPT CTF feedback form**
@@ -140,6 +143,7 @@
  - **Haxquashed - Root**
  - **Haxquash - User**
 	 - [langemyh](/writeups/Boot2Root/Haxquash%20-%20User/langemyh)  
+	 - [dragonslayerz](/writeups/Boot2Root/Haxquash%20-%20User/dragonslayerz)  
  - **The Projects - User**
 	 - [langemyh](/writeups/Boot2Root/The%20Projects%20-%20User/langemyh)  
  - **The Projects - Root**
