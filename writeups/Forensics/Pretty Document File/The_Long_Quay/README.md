@@ -81,21 +81,61 @@ Decoding this reveals a semi-obfuscated command
 
 This looks like something deciding the order of the following characters in the command. It's clear that the first sequence spells `IEX`, second `New-Object`, third `Net.WebClient` etc. So what's left in the final sequnce is just mapping the numbers to the corresponding characters.
 
+Due to my severely limited understanding of bash, python, powershell and any language you can think of, I just manually mapped the corresponding chars and numbers, and easily enough got the flag: `EPT{M4ld0cs_r0X}`. But again, CTFs are all about learning by doing, so I figured I'd give it a try anyways:
+
+Echoing the relevant stuff in two files;
+
 ```bash
 echo "'Y','P','E','u','M','X','n','0','P','f','d','e','&','/','4','Se','g','i','n','s','e','E','5','8','2','V','vz','M','l','A','a','bad','er','r','o','u','p','PP','zZ','down','up','ev','il','exe','ps','4','m','{','_','T','}','c','https', '://','192.168.143.128/'" > chars
 echo "{52}{53}{54}{2}{8}{49}{47}{4}{14}{28}{10}{7}{51}{19}{48}{33}{7}{5}{50}" > positions
 ```
+
+Then I struggled a bit with getting a more practical format. I ended up removed the special characters in both files, and adding a newline for each character/number:
 
 ```bash
 cat chars | tr -d \' | sed 's/,/\n/g' > chars_washed
 cat positions | tr -d \{ | sed 's/\}/\n/g' > positions_washed
 ```
 
+The next step was fairly obivious; just compare the number from `positions_washed` with the value in the corresponding linenumber in `chars_washed`. Right?
+
 ```bash
 cat positions_washed | while read -r line; do sed "${line}q;d" chars_washed; done > flag
+cat flag
+
+c
+https
+ ://
+P
+0
+_
+m
+u
+/
+M
+f
+n
+}
+n
+{
+er
+n
+M
+T
 ```
+
+Well, kind of. 
+![image](https://user-images.githubusercontent.com/5417302/200560164-d9de4f78-09b8-419d-95f1-4327a500f375.png)
+
+How on earth do I tell while and/or sed to start at 0?
+After banging my head for literally an hour, I just removed the first line in chars_washed and hoped for the best.
+
 ```bash
+cat positions_washed | while read -r line; do sed "${line}q;d" chars_washed; done > flag
 tr -d '\n' < flag
+cat flag
 
 https ://192.168.143.128/EPT{M4ld0cs_r0X}P
 ```
+
+Close enough.
