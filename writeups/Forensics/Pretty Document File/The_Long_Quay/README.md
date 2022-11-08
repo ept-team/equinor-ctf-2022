@@ -132,7 +132,8 @@ T
 ```
 ![image](https://user-images.githubusercontent.com/5417302/200560164-d9de4f78-09b8-419d-95f1-4327a500f375.png)
 
-How on earth do I tell sed to start at... 0? I could just remove the first line i `chars_washed` and hope for the best.
+How on earth do I tell sed to start at... 0? Well, I don't. Also, just removing the first line in `chars_washed` and hope for the best felt...awkward.
+
 After some (alot) of trial and error, this kinda worked:
 
 ```bash
