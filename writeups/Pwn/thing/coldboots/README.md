@@ -352,7 +352,7 @@ Here is the output of rop.dump():
 
 ## Write to the stack
 
-Finally we can write the ROP chain to the stack, starting at the return pointer of main, and send an illegal menu option to return the function:
+Finally we can write the ROP chain to the stack, starting at the return pointer of main, and send an illegal menu option to return from the function to the ROP chain:
 
 ```python
 payload = bytes(rop.chain())
