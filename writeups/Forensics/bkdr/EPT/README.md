@@ -73,6 +73,6 @@ This will give you the raw data of all traffic between the client and the server
 
 Finally, we have all the pieces required to be able to capture, decrypt and parse the traffic coming from the C2 server to the backdoored android application. It took a bit of work to fit the REW Sploit MSF parser with the AES HOOK script and, but in the end we get a fully working live cleartext view of all commands coming in from the C2 server after we launch the APK:
 
-![Solve video](img/solve.mp4)
+https://user-images.githubusercontent.com/44871383/200541208-465bbf13-0fc5-4071-9123-a2f63c472052.mp4
 
 There are other ways to accomplish this by doing various monitoring/tracing directly on the device or you can use other hooking approaches. e.g by hooking the dynamically loaded meterpreter classes that are responbible for executing commands etc. This is just one example that required me to get a better understanding of Frida and the underlying implementation of the meterpreter protocol.
