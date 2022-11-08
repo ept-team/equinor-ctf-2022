@@ -81,7 +81,7 @@ Decoding this reveals a semi-obfuscated command
 
 This looks like something deciding the order of the following characters in the command. It's clear that the first sequence spells `IEX`, second `New-Object`, third `Net.WebClient` etc. So what's left in the final sequnce is just mapping the numbers to the corresponding characters.
 
-Due to my severely limited understanding of bash, python, powershell and any language you can think of, I just manually mapped the corresponding chars and numbers, and easily enough got the flag: `EPT{M4ld0cs_r0X}`. But again, CTFs are all about learning by doing, so I figured I'd give it a try anyways:
+Due to my severely limited understanding of, well any scriptinglanguage you can think of, I just manually mapped the corresponding chars and numbers, and easily enough got the flag: `EPT{M4ld0cs_r0X}`. But again, CTFs are all about learning by doing, so I figured I'd give it a try anyways:
 
 Echoing the relevant stuff in two files;
 
