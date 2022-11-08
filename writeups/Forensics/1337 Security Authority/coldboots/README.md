@@ -4,20 +4,18 @@ by *Roellik* for *coldboots*
 
 ---
 
-More forensics!
-
 # Description
 
-`Techarisma Chapter 3/7
-It seems that the threat actor have been utilizing their admin privileges to mess with protected processes. We found a dump file on a compromised system. What could they have got out of this?`
+`Techarisma Chapter 3/7`
+`It seems that the threat actor have been utilizing their admin privileges to mess with protected processes. We found a dump file on a compromised system. What could they have got out of this?`
 
 `Our insider was able to provide us with a custom password wordlist that we suspect was used in this attack.`
 
 # Intro
 
-It looks like Jacob the poor sod is still having coomputer issues. He's lucky to have friends like us, but I'd say he's starting to owe us a favor at this point.
+It looks like Jacob the poor sod is still having coomputer issues. He's lucky to have friends like us, but is starting to owe us a favor at this point.
 
-The challenge provides the file `lsass.DMP` and a `wordlist.txt` containing exactly 100 000 lines of seemingly random garbage wrapped in the `EPT{}` flag format. It's natural to assume that one of them is the correct flag. Knowing how much money Equinor spent on infrastructure this year, we can simply hook the CTF API and try them all, which should take less than two minutes with 1000 requests a second. 
+The challenge provides the files `lsass.DMP` and a `wordlist.txt` containing exactly 100 000 lines of seemingly random garbage wrapped in the `EPT{}` format. One of them is probably the correct flag. Knowing how much money Equinor spent on infrastructure this year, we can simply hook the CTF API and try them all, which should take less than two minutes with 1000 requests a second. 
 
 Start by importing the `requests` library in Python.
 
@@ -37,7 +35,7 @@ So we found the password corresponding to the hash - sadly it's the cookie cutte
 
 Could it be that `SAmaintenance`'s password corresponds to the correct flag? Let's race through the provided `wordlist.txt` and see! 
 
-`Hashcat` is usually the prefered tool for cracking hashes, but since NTLM is fast to iterate with and we only have 100 000 lines to go through, `John the Ripper` with it's faster syntax is more than good enough. So let's dump the hash to its own file and get started.
+`Hashcat` is usually the prefered tool for cracking hashes, but since NTLM is fast to iterate with and we only have 100 000 lines to go through, `John the Ripper` with it's simple syntax is more than good enough. So let's dump the hash to its own file and get started.
 
 John has a tendency to mix up similar hashes and we know the format, so define it strictly both for cracking and showing the result with `--format=NT`. 
 
