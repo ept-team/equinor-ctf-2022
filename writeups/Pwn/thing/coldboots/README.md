@@ -6,14 +6,15 @@ by *StateOfLimbo* for *coldboots*
 
 ## Challenge description
 
-```
 Pwn / :fire: thing :fire:    (2 solves / 494 points)
+
 nordbo
 
 This is a thing
 
 nc io.ept.gg 30002
-```
+
+---
 
 This is indeed a thing. A Fire challenge released at the OnSite EPT CTF Event, with special prices for first blood! Pressure is on!
 
