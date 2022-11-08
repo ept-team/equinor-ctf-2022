@@ -97,8 +97,7 @@ cat positions | tr -d \{ | sed 's/\}/\n/g' > positions_washed
 cat positions_washed | while read -r line; do sed "${line}q;d" chars_washed; done > flag
 ```
 ```bash
-```
-```bash
-```
-```bash
+tr -d '\n' < flag
+
+https ://192.168.143.128/EPT{M4ld0cs_r0X}P
 ```
