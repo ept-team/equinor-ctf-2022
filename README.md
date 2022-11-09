@@ -102,6 +102,7 @@
 	 - [hag](/writeups/Beginner/blog/hag)  
  - **Notes**
  - **nop**
+	 - [coldboots](/writeups/Beginner/nop/coldboots)  
  - **Spring**
 	 - [robertz25](/writeups/Beginner/Spring/robertz25)  
 ### Educational
