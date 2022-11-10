@@ -46,6 +46,7 @@
 	 - [EPT](/writeups/Pwn/The%20state%20of%20limbo/EPT)  
 ### Beginner
  - **Notes - Revisited**
+	 - [FesseMisk](/writeups/Beginner/Notes%20-%20Revisited/FesseMisk)  
  - **Console Pew 2**
 	 - [hag](/writeups/Beginner/Console%20Pew%202/hag)  
  - **nop**
@@ -53,11 +54,15 @@
  - **Spring**
 	 - [robertz25](/writeups/Beginner/Spring/robertz25)  
  - **HiddenOutOfSight**
+	 - [FesseMisk](/writeups/Beginner/HiddenOutOfSight/FesseMisk)  
  - **Notes**
+	 - [FesseMisk](/writeups/Beginner/Notes/FesseMisk)  
  - **blog**
 	 - [givecake](/writeups/Beginner/blog/givecake)  
+	 - [FesseMisk](/writeups/Beginner/blog/FesseMisk)  
 	 - [hag](/writeups/Beginner/blog/hag)  
  - **Lost Keys**
+	 - [FesseMisk](/writeups/Beginner/Lost%20Keys/FesseMisk)  
 ### Forensics
  - **bkdr**
 	 - [EPT](/writeups/Forensics/bkdr/EPT)  
@@ -70,6 +75,7 @@
 	 - [The_Long_Quay](/writeups/Forensics/stompit/The_Long_Quay)  
  - **Pretty Document File**
 	 - [The_Long_Quay](/writeups/Forensics/Pretty%20Document%20File/The_Long_Quay)  
+	 - [FesseMisk](/writeups/Forensics/Pretty%20Document%20File/FesseMisk)  
  - **1337 Security Authority**
 	 - [coldboots](/writeups/Forensics/1337%20Security%20Authority/coldboots)  
 ### Misc
@@ -81,6 +87,7 @@
 	 - [givecake](/writeups/Misc/Lets%20play%20harder/givecake)  
 	 - [Team404](/writeups/Misc/Lets%20play%20harder/Team404)  
 	 - [dragonslayerz](/writeups/Misc/Lets%20play%20harder/dragonslayerz)  
+	 - [FesseMisk](/writeups/Misc/Lets%20play%20harder/FesseMisk)  
  - **Crypt**
  - **hashle**
 	 - [rebug](/writeups/Misc/hashle/rebug)  
@@ -89,6 +96,7 @@
 ### Stego
  - **Jrsk Crypto**
 	 - [givecake](/writeups/Stego/Jrsk%20Crypto/givecake)  
+	 - [FesseMisk](/writeups/Stego/Jrsk%20Crypto/FesseMisk)  
  - **Reversing**
 	 - [ept](/writeups/Stego/Reversing/ept)  
 ### Educational
@@ -101,6 +109,7 @@
  - **fms**
 	 - [EPT](/writeups/Educational/fms/EPT)  
  - **Broken UX**
+	 - [FesseMisk](/writeups/Educational/Broken%20UX/FesseMisk)  
  - **rip**
 	 - [LonerTeam](/writeups/Educational/rip/LonerTeam)  
 	 - [EPT](/writeups/Educational/rip/EPT)  
@@ -111,6 +120,7 @@
 	 - [corax](/writeups/Educational/When%20the%20Stars%20Align/corax)  
  - **Console Pew**
 	 - [givecake](/writeups/Educational/Console%20Pew/givecake)  
+	 - [FesseMisk](/writeups/Educational/Console%20Pew/FesseMisk)  
  - **pincodes**
 ### Azure
  - **Super Secure Storage**
@@ -133,6 +143,7 @@
  - **Flask Sessions**
 	 - [WackAttackNTNU](/writeups/Web/Flask%20Sessions/WackAttackNTNU)  
 	 - [Team404](/writeups/Web/Flask%20Sessions/Team404)  
+	 - [FesseMisk](/writeups/Web/Flask%20Sessions/FesseMisk)  
 	 - [hag](/writeups/Web/Flask%20Sessions/hag)  
  - **shop-2**
  - **helpdesk**
@@ -147,6 +158,7 @@
 ### OnSite
  - **EPT signals**
 	 - [corax](/writeups/OnSite/EPT%20signals/corax)  
+	 - [FesseMisk](/writeups/OnSite/EPT%20signals/FesseMisk)  
  - **IQ puzzle**
  - **Lockpick - Small Masterlock**
  - **Lockpick - Cocraft 400**
@@ -154,6 +166,7 @@
 ### Crypto
  - **rsimpla**
 	 - [dragonslayerz](/writeups/Crypto/rsimpla/dragonslayerz)  
+	 - [FesseMisk](/writeups/Crypto/rsimpla/FesseMisk)  
 	 - [Corax](/writeups/Crypto/rsimpla/Corax)  
  - **Encrypt all the files**
 	 - [Team404](/writeups/Crypto/Encrypt%20all%20the%20files/Team404)  
