@@ -3,7 +3,7 @@
 For this challange we are given the following information as well as the file `note.jpg`
 We have intercepted this screenshot of a note from a hacker's iPhone. We believe the stolen credentials are actually a flag.
 
-![note](note.png)
+![note](note.jpg)
 
 # Solution
 
