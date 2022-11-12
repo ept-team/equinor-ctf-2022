@@ -161,7 +161,7 @@ constraints:
 ```
 
 There's actually a lot of gadgets with different constraints, but when looking at them for too long you start to see a pattern..
-Also because of the two byte write you can only use a gadget that is within 0xffff of the original jump, but the gadgets that are close together also have a pattern in their conditions that start to haunt your dreams if you look at them for too long.. not recommended! I got closer and closer and found calls that matched nearly all conditions except perhaps it heeded `rcx == NULL`, but I had 0x1 .. And that would still crash the gadget.
+Also because of the two byte write you can only use a gadget that is within 0xffff of the original jump, but the gadgets that are close together also have a pattern in their conditions that start to haunt your dreams if you look at them for too long.. not recommended! I got closer and closer and found calls that matched nearly all conditions except perhaps it needed `rcx == NULL`, but I had 0x1 .. And that would still crash the gadget.
 
 At some point I had to abandon my efforts on this challenge to solve some of the other challenges, and I never got to finish this one during the CTF.
 
