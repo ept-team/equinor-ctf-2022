@@ -15,7 +15,9 @@ So how we solved it is mainly by doing two things:
 
 ### 1: Get rid of most of the variation from turning the piece.
 To achieve this, count the free spaces after the locked pieces. Then count the minimal amount of spaces your pieces can cover. As every piece differs by 1 when turned, you now have the amount of turned pieces from the difference between the two. 
+
 ![iq5](iq5.png)
+
 We had 35 free spaces and 32 as minimal on our remaining pieces. This allows us exactly 3 flips, no more or less. So of the 8 remaining pieces we had to flip three. This reduces the number of combinations a lot.
 
 ### 2: Lock more pieces.
