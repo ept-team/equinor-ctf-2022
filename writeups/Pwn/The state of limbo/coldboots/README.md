@@ -8,8 +8,11 @@ by *StateOfLimbo* for *coldboots*
 
 In last years EPT-ctf (2021) yours truly cheesed a www-challenge (write what where) by spamming all writable memory with a one-gadget until magically hitting a writable vtable, cleaning up the solve script to the max; getting shell with a single write.
 
+This year I wasn't so lucky and I was unable to solve this challenge during the CTF. I did however solve it after the CTF was over, and here's how that went about!
 
 # First attempt.
+
+First a look back at my efforts or lack thereof during the CTF:
 
 Looking at the source code provided, it was obvious that this challenge is not about pwning a bug in the executable, but about finding the right spot to patch libc to get a shell. Seeking vengeance for last year, the challenge author removed the ability to spam memory, and only allow us to write two bytes. To make matters worse, we don't get to write to memory, but to patch code in the .text segment.
 
@@ -160,12 +163,12 @@ constraints:
 There's actually a lot of gadgets with different constraints, but when looking at them for too long you start to see a pattern..
 Also because of the two byte write you can only use a gadget that is within 0xffff of the original jump, but the gadgets that are close together also have a pattern in their conditions that start to haunt your dreams if you look at them for too long.. not recommended! I got closer and closer and found calls that matched nearly all conditions except perhaps it heeded `rcx == NULL`, but I had 0x1 .. And that would still crash the gadget.
 
-Finally I had to try to solve some of the other challenges, and I never got to finish this one during the CTF. 
+At some point I had to abandon my efforts on this challenge to solve some of the other challenges, and I never got to finish this one during the CTF.
 
 # Let it go!
 
 Having a challenge named after yourself and not be able to solve it is just not an option, so I have to find that damn gadget!
-I had talked to the challenge author after the CTF, and he confirmed that it is solvable by changing a jump or a call to the right one-gadget, but he had scripted it with some nice gdb scripting magic. I also talked to the player of the one team that solved the challenge during the CTF, and he mentioned he had made a mini debugger in c and used ptrace to read the state during runtime and find a matching gadget that way..
+I had talked to the challenge author after the CTF, and he confirmed that it is solvable by changing a jump or a call to the right one-gadget, so I was definitely on the right track! However he had scripted it with some nice gdb scripting magic. I also talked to the player who actually solved the challenge during the CTF, and he mentioned he had made a mini debugger in c and used ptrace to read the state during runtime and find a matching gadget that way..
 
 Well.. screw that.. how could I have built upon my manual method of traversing the code and checking gadgets manually, without having to learn about ptrace or magic gdb scripting? Probably by finding all the functions that are visited, identifying all jumps and calls and just change and test one after another, doing the math in python.
 
