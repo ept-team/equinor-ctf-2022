@@ -46,6 +46,6 @@ It spits out “654defa998396b0eb3a34a67e16845a4”, which turns out to be the p
 
 ![Nop4](nop4.png)
 
-***`EPT{654defa998396b0eb3a34a67e16845a4}`**
+***`EPT{654defa998396b0eb3a34a67e16845a4}`***
 
 
