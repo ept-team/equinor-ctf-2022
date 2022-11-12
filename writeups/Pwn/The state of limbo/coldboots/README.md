@@ -296,7 +296,7 @@ $ one_gadget -l 2 -r libc-2.35.so
 
 # Brut Forc
 
-Then get to work on the list of jumps... cross checking with the opcodes from objdump. Finding the lowest address I would get from writing 0x0000, and the highest address I would get from writing 0xFFFF. For every jump. Mathing it to every gadget. Just testing the binary with every gadget that fits..
+Then get to work on the list of jumps... cross checking with the opcodes from objdump. Finding the lowest address I would get from writing 0x0000, and the highest address I would get from writing 0xFFFF. For every jump. Matching it to every gadget. Just testing the binary with every gadget that fits..
 
 ```python
 with open('libc.asm','r') as file:
