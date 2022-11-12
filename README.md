@@ -52,11 +52,13 @@
 	 - [hag](/writeups/Beginner/Console%20Pew%202/hag)  
  - **nop**
 	 - [coldboots](/writeups/Beginner/nop/coldboots)  
+	 - [USN-CTF](/writeups/Beginner/nop/USN-CTF)  
  - **Spring**
 	 - [robertz25](/writeups/Beginner/Spring/robertz25)  
  - **HiddenOutOfSight**
 	 - [FesseMisk](/writeups/Beginner/HiddenOutOfSight/FesseMisk)  
  - **Notes**
+	 - [USN-CTF](/writeups/Beginner/Notes/USN-CTF)  
 	 - [FesseMisk](/writeups/Beginner/Notes/FesseMisk)  
  - **blog**
 	 - [givecake](/writeups/Beginner/blog/givecake)  
@@ -164,6 +166,7 @@
 	 - [USN-CTF](/writeups/OnSite/EPT%20signals/USN-CTF)  
 	 - [FesseMisk](/writeups/OnSite/EPT%20signals/FesseMisk)  
  - **IQ puzzle**
+	 - [USN-CTF](/writeups/OnSite/IQ%20puzzle/USN-CTF)  
  - **Lockpick - Small Masterlock**
  - **Lockpick - Cocraft 400**
  - **Lockpick - Combination Lock**
