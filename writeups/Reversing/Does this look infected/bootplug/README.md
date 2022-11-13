@@ -31,7 +31,7 @@ Now what happens if we xor the whole file this this `94 DB CA 7F 55 CF B9 51` ke
 
 ![](screenshot4.png)
 
-Aye aye captain, a MZ file in sight! Dumping out new PE file and looking at in PEStudio we see that is is a DotNet binary called flagstealer. Looking at this file in a DotNet decompiler like ILSpy shows us the basic functionality:
+Aye aye captain, a MZ file in sight! Dumping out the new PE file and looking at it in PEStudio we see that is is a DotNet binary called flagstealer. Looking at this file in a DotNet decompiler like ILSpy shows us the basic functionality:
 
 ![](screenshot5.png)
 
