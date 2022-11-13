@@ -3,9 +3,10 @@
 ### Humble beginnings and microing my macro
 We start out with an excel file `Thanks for nothing.xls` that contains a meme picture about enabling macros.
 If we enable macro the document closes itself and there is no visible macros in the "view macros" view.
-Something weird is going on with this document and even the trusty tool `oledump` was not able to properly dump out something analyzable. However, if we look more around in the document itself we found a hidden sheet named "Macro1". The column `DI` contains references to windows API calls "VirtualAlloc","WriteProcessMemory" and "CreateThread" first to copy some code into a process, then "RtlCopyMemory","QueueUserAPC" and "NtTestAlert" to use Asyncronous Procedure Call to run the shellcode in another thread as a method for indirect Process Injection using the undocumented function NtTestAlert to trigger the queued APC call (example [here](https://cocomelonc.github.io/tutorial/2021/11/20/malware-injection-4.html).
+Something weird is going on with this document and even the trusty tool `oledump` was not able to properly dump out something analyzable. However, if we look more around in the document itself we found a hidden sheet named "Macro1". The column `DI` contains references to windows API calls "VirtualAlloc","WriteProcessMemory" and "CreateThread" first to copy some code into a process, then "RtlCopyMemory","QueueUserAPC" and "NtTestAlert" to use Asyncronous Procedure Call to run the shellcode in another thread as a method for indirect Process Injection using the undocumented function NtTestAlert to trigger the queued APC call (example [here](https://cocomelonc.github.io/tutorial/2021/11/20/malware-injection-4.html)).
 
-The exposed API logic of the macro
+The exposed API logic of the macro:
+
 ![](screenshot1.png)
 
 As we know the high level overview of what is happening, we expect some shellcode encoded somewhere in the macro document although we do not precicely know how this ends up in column DH. But looking at the content, we have a pretty good guess that it is the content in column DF which is not pure ascii.
