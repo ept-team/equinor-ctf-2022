@@ -3,10 +3,10 @@
 ### Humble beginnings and microing my macro
 We start out with an excel file `Thanks for nothing.xls` that contains a meme picture about enabling macros.
 If we enable macro the document closes itself and there is no visible macros in the "view macros" view.
-Something weird is going on with this document and even the trusty tool `oledump` was not able to properly dump out something analyzable. However, if we look more around in the document itself we found a hidden sheet named "Macro1". The column `DI` contains references to windows API calls "VirtualAlloc","WriteProcessMemory" and "CreateThread" first to copy some code into a process, then "RtlCopyMemory","QueueUserAPC" and "NtTestAlert" to use Asyncronous Procedure Call to run the shellcode in another thread as a method for indirect Process Injection using the undocumented function NtTestAlert to trigger the queued APC call (example [here][https://cocomelonc.github.io/tutorial/2021/11/20/malware-injection-4.html]).
+Something weird is going on with this document and even the trusty tool `oledump` was not able to properly dump out something analyzable. However, if we look more around in the document itself we found a hidden sheet named "Macro1". The column `DI` contains references to windows API calls "VirtualAlloc","WriteProcessMemory" and "CreateThread" first to copy some code into a process, then "RtlCopyMemory","QueueUserAPC" and "NtTestAlert" to use Asyncronous Procedure Call to run the shellcode in another thread as a method for indirect Process Injection using the undocumented function NtTestAlert to trigger the queued APC call (example [here](https://cocomelonc.github.io/tutorial/2021/11/20/malware-injection-4.html).
 
 The exposed API logic of the macro
-![[screenshot1.png]]
+![](screenshot1.png)
 
 As we know the high level overview of what is happening, we expect some shellcode encoded somewhere in the macro document although we do not precicely know how this ends up in column DH. But looking at the content, we have a pretty good guess that it is the content in column DF which is not pure ascii.
 
@@ -18,21 +18,21 @@ As this is already in hex format, we can simly regex away and convert it to bina
 
 Now if we open this new shellcode in a dissasembler and interpret it as 64bit code, we see it does some dynamic unpacking of its code:
 
-![[screenshot2.png]]
+![](screenshot2.png)
 
 Now we could have debugged this by loading it a shellcode runner or wrapped with a PE EXE shell to debug it.
 But since this is a fire challenge and we need to solve this quickly we can repeat the old line "there is no cheating in reverse engineering" and spot by eye in a hex editor an interesting pattern near the end of the file:
 
 
-![[screenshot3.png]]
+![](screenshot3.png)
 
 Now what happens if we xor the whole file this this `94 DB CA 7F 55 CF B9 51` key?
 
-![[screenshot4.png]]
+![](screenshot4.png)
 
 Aye aye captain, a MZ file in sight! Dumping out new PE file and looking at in PEStudio we see that is is a DotNet binary called flagstealer. Looking at this file in a DotNet decompiler like ILSpy shows us the basic functionality:
 
-![[screenshot5.png]]
+![](screenshot5.png)
 
 TLDR; it checks if a file called `flag.txt` exists in the current users Desktop folder and if it does it replaces it with another file `"%TEMP%\5a3e5c485ead66f7f2e72657884fd951"` before uploading the file to `https://xtremelylegitdomain.io.ept.gg/upload`.
 
