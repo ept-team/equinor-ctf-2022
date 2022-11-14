@@ -154,6 +154,7 @@
  - **blog2**
 	 - [givecake](/writeups/Web/blog2/givecake)  
 	 - [Team404](/writeups/Web/blog2/Team404)  
+	 - [NOsecurity](/writeups/Web/blog2/NOsecurity) 
 ### Reversing
  - **Does this look infected**
  - **magic unicorns**
