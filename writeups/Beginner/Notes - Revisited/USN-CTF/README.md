@@ -16,6 +16,6 @@ By using [StegOnline](https://stegonline.georgeom.net/image) and messing with th
 
 ![note1](note1.png)
 
-Convering this to the flag format gives us the flag ***`EPT{30.05.2011_06:45`***
+Convering this to the flag format gives us the flag ***`EPT{30.05.2011_06:45}`***
 
 
