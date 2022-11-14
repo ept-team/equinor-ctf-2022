@@ -47,6 +47,7 @@
 	 - [EPT](/writeups/Pwn/The%20state%20of%20limbo/EPT)  
 ### Beginner
  - **Notes - Revisited**
+	 - [USN-CTF](/writeups/Beginner/Notes%20-%20Revisited/USN-CTF)  
 	 - [FesseMisk](/writeups/Beginner/Notes%20-%20Revisited/FesseMisk)  
  - **Console Pew 2**
 	 - [hag](/writeups/Beginner/Console%20Pew%202/hag)  
@@ -153,10 +154,11 @@
  - **helpdesk**
  - **blog2**
 	 - [givecake](/writeups/Web/blog2/givecake)  
+	 - [NOsecurity](/writeups/Web/blog2/NOsecurity)  
 	 - [Team404](/writeups/Web/blog2/Team404)  
-	 - [NOsecurity](/writeups/Web/blog2/NOsecurity) 
 ### Reversing
  - **Does this look infected**
+	 - [bootplug](/writeups/Reversing/Does%20this%20look%20infected/bootplug)  
  - **magic unicorns**
 	 - [Crackin](/writeups/Reversing/magic%20unicorns/Crackin)  
  - **css**
