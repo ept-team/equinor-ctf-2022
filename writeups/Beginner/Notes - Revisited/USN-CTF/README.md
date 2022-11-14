@@ -1,6 +1,6 @@
 # Notes - Revisited writeup
 
-In this challange we are again working with the same picture we had in [Notes]https://github.com/ept-team/equinor-ctf-2022/tree/main/writeups/Beginner/Notes/USN-CTF)
+In this challange we are again working with the same picture we had in [Notes](https://github.com/ept-team/equinor-ctf-2022/tree/main/writeups/Beginner/Notes/USN-CTF)
 
 We are given the following information:
 
