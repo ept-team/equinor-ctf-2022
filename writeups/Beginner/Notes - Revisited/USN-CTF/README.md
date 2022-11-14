@@ -14,7 +14,7 @@ P.S: This is not an artificial challenge - this timestamp is indeed added by the
 
 By using [StegOnline](https://stegonline.georgeom.net/image) and messing with the settings we can see that the creation of the note becomes visible.
 
-![note1](notes1.png)
+![note1](note1.png)
 
 Convering this to the flag format gives us the flag ***`EPT{30.05.2011_06:45`***
 
