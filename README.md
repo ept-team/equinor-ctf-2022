@@ -130,14 +130,20 @@
 ### Azure
  - **Super Secure Storage**
 	 - [WackAttackNTNU](/writeups/Azure/Super%20Secure%20Storage/WackAttackNTNU)  
+	 - [Corax](/writeups/Azure/Super%20Secure%20Storage/Corax)  
  - **Automated the secrets**
+	 - [Corax](/writeups/Azure/Automated%20the%20secrets/Corax)  
  - **ServicePrincipal**
 	 - [WackAttackNTNU](/writeups/Azure/ServicePrincipal/WackAttackNTNU)  
 	 - [dragonslayerz](/writeups/Azure/ServicePrincipal/dragonslayerz)  
+	 - [Corax](/writeups/Azure/ServicePrincipal/Corax)  
  - **Cloud protected web app**
 	 - [NOsecurity](/writeups/Azure/Cloud%20protected%20web%20app/NOsecurity)  
+	 - [Corax](/writeups/Azure/Cloud%20protected%20web%20app/Corax)  
  - **DSC**
+	 - [Corax](/writeups/Azure/DSC/Corax)  
  - **Service Principals as SysAdmins**
+	 - [Corax](/writeups/Azure/Service%20Principals%20as%20SysAdmins/Corax)  
 ### Web
  - **shop-1**
 	 - [bootplug](/writeups/Web/shop-1/bootplug)  
