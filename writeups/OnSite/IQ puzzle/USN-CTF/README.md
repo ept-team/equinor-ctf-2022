@@ -23,7 +23,7 @@ We had 35 free spaces and 32 as minimal on our remaining pieces. This allows us 
 ### 2: Lock more pieces.
 Find the most restricted area on your board, where few pieces will fit. In our case we had a spot where only 3 pieces (where one could be turned, so effectively 4) could fit without making holes. Now test from those combinations. If you have multiple members with a board, you can test them in parallel. Remember that the now “locked” piece also counts for the number of flips. For example one of our combinations had to be flipped, that means that the last 6 pieces only 2 could be flipped.
 
-# Conlcusion
+# Conclusion
 
 Be systematic, don’t repeat earlier attempts. Or as Einstein would say it: "Insanity is doing the same thing over and over again and expecting different results."
 
